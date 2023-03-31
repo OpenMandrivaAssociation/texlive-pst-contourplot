@@ -1,6 +1,6 @@
 Name:		texlive-pst-contourplot
 Version:	48230
-Release:	1
+Release:	2
 Summary:	Draw implicit functions using the "marching squares" algorithm
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/pst-contourplot
