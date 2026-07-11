@@ -1,39 +1,23 @@
-Name:		texlive-pst-contourplot
-Version:	48230
-Release:	2
-Summary:	Draw implicit functions using the "marching squares" algorithm
+%global tl_name pst-contourplot
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	0.6
+Release:	%{tl_revision}.1
+Summary:	Draw implicit functions using the marching squares algorithm
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/pst-contourplot
+URL:		https://www.ctan.org/tex-archive/graphics/pstricks/contrib/pst-contourplot
 License:	lppl
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/pst-contourplot.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/pst-contourplot.doc.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/pst-contourplot.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/pst-contourplot.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-This package allows to draw implicit functions "f(x,y) = 0"
-with options for coloring the inside of the surfaces, for
-marking the points and arrowing the curve at points chosen by
-the user. The package uses the "marching squares" algorithm.
+This package allows to draw implicit functions "f(x,y) = 0" with options
+for coloring the inside of the surfaces, for marking the points and
+arrowing the curve at points chosen by the user. The package uses the
+"marching squares" algorithm.
 
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%{_texmfdistdir}/tex/latex/pst-contourplot
-%{_texmfdistdir}/tex/generic/pst-contourplot
-%doc %{_texmfdistdir}/doc/generic/pst-contourplot
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
